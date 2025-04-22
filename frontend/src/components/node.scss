@@ -1,0 +1,22 @@
+// Import dependencies
+@import './../base.scss';
+
+// Styles
+.node {
+    width: .5rem;
+    height: .5rem;
+    border: .15rem solid black;
+    border-radius: 50%;
+}
+
+.inactive {
+    background-color: $background;
+}
+
+.active-low {
+    background-color: $primary-2;
+}
+
+.active-high {
+    background-color: $primary;
+}

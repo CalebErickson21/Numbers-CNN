@@ -1,0 +1,9 @@
+// Import dependencies
+@import './../base.scss';
+
+// Styles
+.grid {
+    display: grid;
+    grid-template-columns: repeat(28, auto);
+    gap: 0.15rem;
+}
