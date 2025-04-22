@@ -11,10 +11,12 @@ const Node = ({ id, val, mouseDown, handleNodeUpdate }) => {
         }
     }
 
+    // Handle click effect
     const handleClick = () => {
         handleNodeUpdate(id);
     }
 
+    // Get node class based on matrix value
     const getNodeClass = () => {
         if (val === 0.00) { return 'node inactive';}
         if (val === 0.50) { return 'node active-low'; }

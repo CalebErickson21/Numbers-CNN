@@ -3,7 +3,33 @@
 
 // Styles
 .grid {
+    margin: 5% 25% 2.5% 25%;
     display: grid;
     grid-template-columns: repeat(28, auto);
     gap: 0.1rem;
+}
+
+.grid-controls {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    *:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+    .btn {
+        height: 5dvh;
+        min-height: min-content;
+        font-weight: bold;
+        background: $primary;
+        color: $background;
+        border: 2px solid $accent;
+        border-radius: 0.5rem;
+    
+        &:hover {
+            box-shadow: 2px 2px 5px $accent;
+        }
+    }
 }

@@ -22,13 +22,6 @@ function App() {
     }
   };
 
-  const [clear, setClear] = useState(false);
-  const handleClear = (e) => {
-    e.preventDefault();
-    setClear(true);
-  }
-
-
   // Visible component
   return (
     <div className="app">
@@ -40,15 +33,9 @@ function App() {
         </div>
 
         <div className='flex-col right'>
-          <div className='grid-container'>
-            <Grid clear={clear} setClear={setClear}/>
-          </div>
-          <div className='grid-controls'>
-            <button className='btn' type='button' onClick={handleClear}>Clear</button>
-            <button className='btn' type='button'>Calculate Number</button>
-            <h3>NUMBER</h3>
-          </div>
+          <Grid />
         </div>
+        
       </div>
     </div>
   );

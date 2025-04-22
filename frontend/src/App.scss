@@ -49,31 +49,3 @@
         background: $background;
     }
 }
-
-.grid-container {
-    margin: 5% 25% 2.5% 25%;
-}
-
-.grid-controls {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
-    *:not(:last-child) {
-        margin-right: 1rem;
-    }
-}
-
-.btn {
-    height: 50%;
-    font-weight: bold;
-    background: $primary;
-    color: $background;
-    border: 2px solid $accent;
-    border-radius: 0.5rem;
-
-    &:hover {
-        box-shadow: 2px 2px 5px $accent;
-    }
-}
