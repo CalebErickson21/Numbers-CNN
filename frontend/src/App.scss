@@ -1,0 +1,44 @@
+$sm: 768px;
+$md: 1024px;
+
+.App {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+.flex-row {
+    display: flex;
+    height: 100%;
+
+    @media (max-width: $sm) {
+        flex-direction: column;
+    }
+
+    .flex-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+
+        @media (max-width: $sm) { // @media (condition)
+            flex: 1 1 100%; // flex: grow shink flex-basis (width)
+        }
+    }
+
+    .left {
+        background-color: red;
+        @media not all and (max-width: $sm) {
+            width: 25%;
+        }
+    }
+
+    .right {
+        background-color: blue;
+        @media  not all and (max-width: $sm) {
+            width: 75%;
+        }
+    }
+
+        
+}

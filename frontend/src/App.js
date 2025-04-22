@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 // Import styles
-import './App.css';
+import './App.scss';
 
 // App component
 function App() {
@@ -25,8 +25,18 @@ function App() {
   // Visible component
   return (
     <div className="App">
-      <button onClick={(e) => sendToBackend(e)}>Send to Backend</button>
-      <h1>{text}</h1>
+      <div className='flex-row'>
+        
+        <div className='flex-col left'>
+          <button onClick={(e) => sendToBackend(e)}>Send to Backend</button>
+          
+        </div>
+
+        <div className='flex-col right'>
+          <h1>{text}</h1>
+
+        </div>
+      </div>
     </div>
   );
 }
