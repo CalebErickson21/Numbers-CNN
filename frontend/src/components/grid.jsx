@@ -85,7 +85,7 @@ const Grid = ({ clear, setClear}) => {
 
     // Visible component
     return (
-        <div className="grid">
+        <div className='grid' onDragStart={(e) => e.preventDefault()}>
             {nodes}
         </div>
     )

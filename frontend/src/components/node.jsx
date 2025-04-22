@@ -23,7 +23,7 @@ const Node = ({ id, val, mouseDown, handleNodeUpdate }) => {
 
     // Visible component
     return (
-        <div id={'node_' + id} className={getNodeClass()} onMouseDown={handleClick} onMouseEnter={handleEnter}></div>
+        <div id={'node_' + id} className={getNodeClass()} onMouseDown={handleClick} onMouseEnter={handleEnter} onDragStart={(e) => e.preventDefault()}></div>
     )
 
 };
