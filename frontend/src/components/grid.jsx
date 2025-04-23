@@ -1,5 +1,6 @@
 // Import dependecies
 import { useState, useEffect, use } from 'react';
+import axios from 'axios';
 
 // Import styles
 import './grid.scss';
@@ -34,11 +35,13 @@ const Grid = () => {
     const gridSize = 28;
     const totalNodes = gridSize * gridSize;
     const [mat, setMat] = useState(new Array(totalNodes).fill(0));
+    const [number, setNumber] = useState(null);
 
     // Clear matrix controls
     const handleClear = (e) => {
         e.preventDefault();
-        setMat(new Array(totalNodes).fill(0)); 
+        setMat(new Array(totalNodes).fill(0)); // Reset grid
+        setNumber(null); // Reset number when clearing grid
     }
 
     // Handle node update
@@ -80,14 +83,18 @@ const Grid = () => {
 
 
     // Backend request to predict number
-    const [number, setNumber] = useState(null);
-    const handlePredict = async () => {
-        // TODO
+    const handlePredict = async (e) => {
+        try {
+            e.preventDefault(); // Prevent default button behavior
+            const res = await axios.post('http://localhost:5000/api/predict', { mat });
+            const data = res.data;
+            setNumber(data.number);
+        }
+        catch (err) {
+            setNumber(null); // Reset number if error occurs
+            console.error('Error fetching prediction: ', err);
+        }
     }
-
-
-
-
 
     /**Create an array of nodes
      * .from() creates a new array from an iterable object
@@ -106,8 +113,8 @@ const Grid = () => {
             </div>
             <div className='grid-controls'>
                 <button className='btn' type='button' onClick={handleClear}>Clear</button>
-                <button className='btn' type='button'>Calculate Number</button>
-                <h3>{number ? number : ''}</h3>
+                <button className='btn' type='button' onClick={handlePredict}>Calculate Number</button>
+                <h2>{number ? number : ''}</h2>
           </div>
         </>
     )

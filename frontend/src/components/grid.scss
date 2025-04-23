@@ -15,9 +15,15 @@
     align-items: center;
     width: 100%;
     
-    *:not(:last-child) {
-        margin-right: 1rem;
+    * {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
     }
+
 
     .btn {
         height: 5dvh;

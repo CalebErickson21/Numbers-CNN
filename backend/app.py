@@ -5,9 +5,9 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/api/hello', methods=['POST'])
+@app.route('/api/predict', methods=['POST'])
 def hello():
-    return jsonify({'message': 'Hello, World!', 'success': True})
+    return jsonify({'number': 4, 'success': True})
 
 
 if __name__ == '__main__':
