@@ -1,0 +1,5 @@
+# Training and testing data
+/data
+
+# Trained model
+trained_model.pkl
