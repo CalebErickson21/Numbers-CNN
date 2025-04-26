@@ -88,7 +88,7 @@ const Grid = () => {
             e.preventDefault(); // Prevent default button behavior
             const res = await axios.post('http://localhost:5000/api/predict', { mat });
             const data = res.data;
-            setNumber(data.number);
+            setNumber(data.prediction);
         }
         catch (err) {
             setNumber(null); // Reset number if error occurs

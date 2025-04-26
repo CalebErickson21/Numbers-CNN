@@ -1,8 +1,9 @@
 # Import dependencies
-import random # Used for shuffling data during training
-import time # Measure time taken per each epoch
-import struct # Used for reading binary files (MNIST dataset)
 import numpy as np # Used for matrix operations
+import pickle # Used for saving and loading model weights and biases
+import random # Used for shuffling data during training
+import struct # Used for reading binary files (MNIST dataset)
+import time # Measure time taken per each epoch
 
 ### --- MNINST DATASET LOADER --- ###
 def load_mnist_images(filename):
@@ -182,3 +183,8 @@ if __name__ == "__main__":
     # Initialize and train the network
     net = Network([784, 30, 10])
     net.SGD(training_data, epochs=10, mini_batch_size=10, eta=3.0, test_data=test_data)
+
+    # Save the trained model to a file
+    with open('trained_model.pkl', 'wb') as f:
+        pickle.dump(net, f)
+
