@@ -3,10 +3,10 @@
 
 // Styles
 .grid {
-    margin: 5% 25% 2.5% 25%;
+    margin: 5% 10% 2.5% 10%;
     display: grid;
     grid-template-columns: repeat(28, auto);
-    gap: 0.1rem;
+    gap: 0.05rem;
 }
 
 .grid-controls {

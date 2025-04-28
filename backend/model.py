@@ -181,8 +181,8 @@ if __name__ == "__main__":
     test_data = list(zip(test_imgs, test_labels))  # raw labels for evaluate()
 
     # Initialize and train the network
-    net = Network([784, 30, 10])
-    net.SGD(training_data, epochs=10, mini_batch_size=10, eta=3.0, test_data=test_data)
+    net = Network([784, 64, 10])
+    net.SGD(training_data, epochs=20, mini_batch_size=10, eta=3.0, test_data=test_data)
 
     # Save the trained model to a file
     with open('trained_model.pkl', 'wb') as f:

@@ -1,5 +1,5 @@
 // Import dependecies
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Import styles
@@ -46,39 +46,51 @@ const Grid = () => {
 
     // Handle node update
     const handleNodeUpdate = (idx) => {
+
+        const clamp = (val) => {
+            return Math.min(1.00, val);
+        }
+
+        
         setMat(prevMat => {
             const newMat = [...prevMat]; // Ensures trigger re-render
-
-            newMat[idx] = 1.00; // Set the value of the node to 1.00
-
+            
+            newMat[idx] = 0.90; // Set the value of the node to 1.00
+            
             // Update neighbors (left, right, up, down) if within bounds
+            const firstLayer = 0.25;
+            const secondLayer = 0.15;
+
+            // Direct neighbors
             if (idx % gridSize !== 0) {  // Left neighbor
-                newMat[idx - 1] = Math.max(0.50, prevMat[idx - 1]); // Ensure it doesn't go below 0.50
+                newMat[idx - 1] = clamp(Math.max(firstLayer, prevMat[idx - 1] + firstLayer / 5));
             }
             if ((idx + 1) % gridSize !== 0) { // Right neighbor
-                newMat[idx + 1] = Math.max(0.50, prevMat[idx + 1]); // Ensure it doesn't go below 0.50
+                newMat[idx + 1] = clamp(Math.max(firstLayer, prevMat[idx + 1] + firstLayer / 5));
             }
             if (idx - gridSize >= 0) { // Top neighbor
-                newMat[idx - gridSize] = Math.max(0.50, prevMat[idx - gridSize]); // Ensure it doesn't go below 0.50
+                newMat[idx - gridSize] = clamp(Math.max(firstLayer, prevMat[idx - gridSize] + firstLayer / 5));
             }
             if (idx + gridSize < totalNodes) { // Bottom neighbor
-                newMat[idx + gridSize] = Math.max(0.50, prevMat[idx + gridSize]); // Ensure it doesn't go below 0.50            }
+                newMat[idx + gridSize] = clamp(Math.max(firstLayer, prevMat[idx + gridSize] + firstLayer / 5));       
             }
+            // Diagonal neighbors
             if (idx - gridSize - 1 >= 0 && (idx - gridSize - 1) % gridSize !== gridSize - 1) { // Top-left neighbor
-                newMat[idx - gridSize - 1] = Math.max(0.50, prevMat[idx - gridSize - 1]); // Ensure it doesn't go below 0.50
+                newMat[idx - gridSize - 1] = clamp(Math.max(secondLayer, prevMat[idx - gridSize - 1] + secondLayer / 5));
             }
             if (idx - gridSize + 1 >= 0 && (idx - gridSize + 1) % gridSize !== 0) { // Top-right neighbor
-                newMat[idx - gridSize + 1] = Math.max(0.50, prevMat[idx - gridSize + 1]); // Ensure it doesn't go below 0.50
+                newMat[idx - gridSize + 1] = clamp(Math.max(secondLayer, prevMat[idx - gridSize + 1] + secondLayer / 5));
             }
             if (idx + gridSize - 1 < totalNodes && (idx + gridSize - 1) % gridSize !== gridSize - 1) { // Bottom-left neighbor
-                newMat[idx + gridSize - 1] = Math.max(0.50, prevMat[idx + gridSize - 1]);
+                newMat[idx + gridSize - 1] = clamp(Math.max(secondLayer, prevMat[idx + gridSize - 1] + secondLayer / 5));
             }
             if (idx + gridSize + 1 < totalNodes && (idx + gridSize + 1) % gridSize !== 0) { // Bottom-right neighbor
-                newMat[idx + gridSize + 1] = Math.max(0.50, prevMat[idx + gridSize + 1]);
+                newMat[idx + gridSize + 1] = clamp(Math.max(secondLayer, prevMat[idx + gridSize + 1] + secondLayer / 5));
             }
-
+        
             return newMat;
         });
+        
     }
 
 

@@ -18,9 +18,10 @@ const Node = ({ id, val, mouseDown, handleNodeUpdate }) => {
 
     // Get node class based on matrix value
     const getNodeClass = () => {
-        if (val === 0.00) { return 'node inactive';}
-        if (val === 0.50) { return 'node active-low'; }
-        if (val === 1.00) { return 'node active-high'; }
+        if (val === 0.00) { return 'node inactive'; }
+        else if (val <= 0.33) { return 'node active-low'; }
+        else if (val  <= 0.67) { return 'node active-mid'; }
+        else if (val <= 1.00) { return 'node active-high'; }
     }
 
     // Visible component

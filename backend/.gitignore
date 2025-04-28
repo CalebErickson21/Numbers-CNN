@@ -1,5 +1,8 @@
 # Training and testing data
 data/
 
+# Pycache
+__pycache__/
+
 # Trained model
 trained_model.pkl

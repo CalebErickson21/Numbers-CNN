@@ -1,11 +1,13 @@
 // Import dependencies
 @import './../base.scss';
 
+$node-size: 0.75dvw;
+
 // Styles
 .node {
-    width: .5rem;
-    height: .5rem;
-    border: .15rem solid black;
+    width: $node-size;
+    height: $node-size;
+    border: 0.15rem solid black;
     border-radius: 25%;
 }
 
@@ -14,7 +16,11 @@
 }
 
 .active-low {
-    background-color: $primary-2;
+    background-color: $primary-3;
+}
+
+.active-mid {
+    background-color: $primary-2
 }
 
 .active-high {
