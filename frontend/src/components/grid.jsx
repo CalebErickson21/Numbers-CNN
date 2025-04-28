@@ -55,11 +55,11 @@ const Grid = () => {
         setMat(prevMat => {
             const newMat = [...prevMat]; // Ensures trigger re-render
             
-            newMat[idx] = 0.90; // Set the value of the node to 1.00
+            newMat[idx] = 0.80; // Set the value of the node to 1.00
             
             // Update neighbors (left, right, up, down) if within bounds
-            const firstLayer = 0.25;
-            const secondLayer = 0.15;
+            const firstLayer = 0.20;
+            const secondLayer = 0.10;
 
             // Direct neighbors
             if (idx % gridSize !== 0) {  // Left neighbor
