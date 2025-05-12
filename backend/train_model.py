@@ -1,5 +1,9 @@
-import pickle
 from model import Network
+import numpy as np # Used for matrix operations
+import pickle # Used for saving and loading model weights and biases
+import random # Used for shuffling data during training
+import struct # Used for reading binary files (MNIST dataset)
+import time # Measure time taken per each epoch
 
 
 def load_mnist_images(filename):
@@ -32,7 +36,7 @@ training_data = list(zip(train_imgs, [vectorized_label(y) for y in train_labels]
 test_data = list(zip(test_imgs, test_labels))  # raw labels for evaluate()
 
 # Initialize and train the network
-net = Network([784, 64, 10])
+net = Network([784, 32, 10])
 net.SGD(training_data, epochs=20, mini_batch_size=10, eta=3.0, test_data=test_data)
 
 # Save the trained model to a file

@@ -1,8 +1,6 @@
 # Import dependencies
 import numpy as np # Used for matrix operations
-import pickle # Used for saving and loading model weights and biases
 import random # Used for shuffling data during training
-import struct # Used for reading binary files (MNIST dataset)
 import time # Measure time taken per each epoch
 
 ### --- MNINST DATASET LOADER --- ###
