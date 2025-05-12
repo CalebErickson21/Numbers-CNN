@@ -10,7 +10,7 @@ import Node from './node.jsx'
 
 const ENV = 'prod'; // Set environment to 'prod' or 'dev'
 let tmp = '';
-ENV === 'development' ? tmp = process.env.DEV_API_ENDPOINT : tmp = process.env.PROD_API_ENDPOINT;
+ENV === 'development' ? tmp = process.env.REACT_APP_DEV_API_ENDPOINT : tmp = process.env.REACT_APP_PROD_API_ENDPOINT;
 const API_ENDPOINT = tmp;
 
 // Component
