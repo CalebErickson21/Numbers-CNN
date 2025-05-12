@@ -8,6 +8,11 @@ import './grid.scss';
 // Import components
 import Node from './node.jsx'
 
+const ENV = 'prod'; // Set environment to 'prod' or 'dev'
+let tmp = '';
+ENV === 'development' ? tmp = process.env.DEV_API_ENDPOINT : tmp = process.env.PROD_API_ENDPOINT;
+const API_ENDPOINT = tmp;
+
 // Component
 const Grid = () => {
 
@@ -51,7 +56,6 @@ const Grid = () => {
             return Math.min(1.00, val);
         }
 
-        
         setMat(prevMat => {
             const newMat = [...prevMat]; // Ensures trigger re-render
             
@@ -98,7 +102,7 @@ const Grid = () => {
     const handlePredict = async (e) => {
         try {
             e.preventDefault(); // Prevent default button behavior
-            const res = await axios.post('http://localhost:5000/api/predict', { mat });
+            const res = await axios.post(API_ENDPOINT + 'predict', { mat });
             const data = res.data;
             setNumber(data.prediction);
         }
