@@ -1,13 +1,16 @@
 from flask import Flask, request, jsonify
 import numpy as np
 import pickle
-from model import Network, sigmoid, sigmoid_prime
+from model import Network # pickle.load() requires the class definition to be available
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-with open('trained_model.pkl', 'rb') as f:
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "trained_model.pkl")
+
+with open(MODEL_PATH, 'rb') as f:
     net = pickle.load(f)
 
 
