@@ -8,9 +8,9 @@ import './grid.scss';
 // Import components
 import Node from './node.jsx'
 
-const ENV = 'prod'; // Set environment to 'prod' or 'dev'
+const ENV = 'PROD'; // Set environment to 'prod' or 'dev'
 let tmp = '';
-ENV === 'development' ? tmp = process.env.REACT_APP_DEV_API_ENDPOINT : tmp = process.env.REACT_APP_PROD_API_ENDPOINT;
+ENV === 'DEV' ? tmp = process.env.REACT_APP_DEV_API_ENDPOINT : tmp = process.env.REACT_APP_PROD_API_ENDPOINT;
 const API_ENDPOINT = tmp;
 
 // Component
