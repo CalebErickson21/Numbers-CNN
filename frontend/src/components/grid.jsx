@@ -7,11 +7,7 @@ import './grid.scss';
 
 // Import components
 import Node from './node.jsx'
-
-const ENV = 'PROD'; // Set environment to 'prod' or 'dev'
-let tmp = '';
-ENV === 'DEV' ? tmp = process.env.REACT_APP_DEV_API_ENDPOINT : tmp = process.env.REACT_APP_PROD_API_ENDPOINT;
-const API_ENDPOINT = tmp;
+import { API_ENDPOINT } from '../api.js';
 
 // Component
 const Grid = () => {
