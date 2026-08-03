@@ -6,12 +6,22 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('ALLOWED_ORIGINS', '').split(',')
+    if origin.strip()
+]
+CORS(app, origins=ALLOWED_ORIGINS)
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "trained_model.pkl")
 
 with open(MODEL_PATH, 'rb') as f:
     net = pickle.load(f)
+
+
+@app.route('/api/health', methods=['GET'])
+def health():
+    return jsonify({'status': 'ok'}), 200
 
 
 @app.route('/api/predict', methods=['POST'])

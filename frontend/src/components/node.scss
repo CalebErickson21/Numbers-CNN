@@ -1,5 +1,4 @@
-// Import dependencies
-@import './../base.scss';
+@use '../base.scss' as *;
 
 $node-size: 0.75dvw;
 

@@ -3,6 +3,7 @@ import './App.scss';
 
 // Import components
 import Grid from './components/grid.jsx';
+import BootOverlay from './components/BootOverlay.jsx';
 
 // App component
 function App() {
@@ -10,6 +11,7 @@ function App() {
   // Visible component
   return (
     <div className="app">
+      <BootOverlay />
       <div className='flex-row'>
         
         <div className='flex-col left'>
